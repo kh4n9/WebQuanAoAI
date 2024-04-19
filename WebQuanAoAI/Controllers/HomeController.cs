@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using System.Security.AccessControl;
 using WebQuanAoAI.Models;
@@ -19,7 +20,7 @@ namespace WebQuanAoAI.Controllers
 
         public IActionResult Index()
         {
-            var products = _datacontext.Products.ToList();
+            var products = _datacontext.Products.Include("Category").Include("Brand").ToList();
             return View(products);
         }
 
