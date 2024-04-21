@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using WebQuanAoAI.Models;
 using WebQuanAoAI.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,7 +20,29 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
+builder.Services.AddIdentity<AppUserModel,IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
+builder.Services.AddRazorPages();
+
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    // Password settings.
+    options.Password.RequireDigit = true;
+    options.Password.RequireLowercase = true;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequiredLength = 6;
+    options.Password.RequiredUniqueChars = 1;
+
+
+
+    options.User.RequireUniqueEmail = true;
+});
+
 var app = builder.Build();
+
+app.UseStatusCodePagesWithRedirects("/Home/Error?statuscode={0}");
+
 app.UseSession();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -34,11 +58,23 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "Areas",
     pattern: "{area:exists}/{controller=Product}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+    name: "category",
+    pattern: "/category/{Slug?}",
+    defaults: new {controller="Category",action="Index"} );
+
+app.MapControllerRoute(
+    name: "brand",
+    pattern: "/brand/{Slug?}",
+    defaults: new { controller = "Brand", action = "Index" });
 
 app.MapControllerRoute(
     name: "default",

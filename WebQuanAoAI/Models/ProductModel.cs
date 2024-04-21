@@ -8,7 +8,7 @@ namespace WebQuanAoAI.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Yêu cầu nhập tên sản phẩm")]
         public string Name { get; set; }
         [Required]
         public string Description { get; set; }
@@ -21,7 +21,7 @@ namespace WebQuanAoAI.Models
         [Required]
         public int CategoryId { get; set; }
         public CategoryModel Category { get; set; }
-        public string Image { get; set; }
+        public string Image { get; set; } = "noname.jeg";
         [NotMapped]
         [FileExtension]
         public IFormFile ImageUpload { get; set; }

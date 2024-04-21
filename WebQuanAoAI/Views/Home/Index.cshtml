@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<ProductModel>
 
 <!-- Shop Product Start -->
-<div class="col-lg-9 col-md-8">
+<div class="col-lg-12 col-md-8">
     <div class="row pb-3">
         <div class="col-12 pb-1">
             <div class="d-flex align-items-center justify-content-between mb-4">
@@ -31,22 +31,19 @@
         </div>
         @foreach (var item in  Model)
         {
-            <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
+            <div class="col-lg-2 col-md-6 col-sm-6 pb-1">
                 <div class="product-item bg-light mb-4">
                     <div class="product-img position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="~/img/@item.Image" alt="@item.Image">
+                        <img class="img-fluid w-100" src="~/media/products/@item.Image" alt="@item.Image">
                         <div class="product-action">
                             <a class="btn btn-outline-dark btn-square" asp-action="AddToCart" asp-controller="Cart" asp-route-Id="@item.Id"><i class="fa fa-shopping-cart"></i></a>
-@*                             <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a> *@
                         </div>
                     </div>
 
                     <div class="text-center py-4">
                         <a asp-controller="Product" asp-action="Details" asp-route-Id="@item.Id" class="h6 text-decoration-none text-truncate">@item.Name</a><br /><br />
                         <p class="p text-decoration-none text-truncate" href="">Danh Mục: @item.Category.Name</p>
-                        <p class="p text-decoration-none text-truncate" href="">Hiệu: @item.Brand.Name</p>
+                        <p class="p text-decoration-none text-truncate" href="">Nhãn Hiệu: @item.Brand.Name</p>
                         <div class="d-flex align-items-center justify-content-center mt-2">
                             <h5>$@item.Price</h5><h6 class="text-muted ml-2"><del>$@(item.Price*(decimal)1.5)</del></h6>
                         </div>

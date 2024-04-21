@@ -9,7 +9,7 @@ namespace WebQuanAoAI.Repository.Validation
             if (value is IFormFile file)
             {
                 var extension = Path.GetExtension(file.FileName);
-                string[] extensions = { ".jpeg", ".jpg", ".png" };
+                string[] extensions = { "jpeg", "jpg", "png" };
 
                 bool result = extensions.Any(x => extension.EndsWith(x));
 

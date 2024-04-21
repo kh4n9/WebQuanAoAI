@@ -68,17 +68,16 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a asp-controller="Home" asp-action="" class="nav-item nav-link active">Home</a>
+                            <a asp-controller="" asp-action="" class="nav-item nav-link active">Home</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down mt-1"></i></a>
                                 <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
                                     <a asp-controller="Category" asp-action="" class="dropdown-item">Categories</a>
-                                    <a asp-controller="Product" asp-action="Details" class="dropdown-item">Product Details</a>
-                                    <a asp-controller="Cart" asp-action="" class="dropdown-item">Cart</a>
-                                    <a asp-controller="Checkout" asp-action="" class="dropdown-item">Checkout</a>
+                                    <a asp-controller="Brand" asp-action="" class="dropdown-item">Brands</a>
+                                    <a asp-controller="Product" asp-action="" class="dropdown-item">Products</a>
+                                    <a asp-controller="Order" asp-action="" class="dropdown-item">Orders</a>
                                 </div>
                             </div>
-                            <a class="nav-item nav-link">Contact</a>
                         </div>
                         <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
                             <a href="" class="btn px-0">
@@ -100,7 +99,7 @@
     <div class="container-fluid">
         @Html.Partial("_NotificationPartial")
         <div class="row px-xl-5">
-            @RenderBody();
+            @RenderBody()
         </div>
     </div>
     <!-- Shop End -->
@@ -193,6 +192,7 @@
     <script src="~/js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="~/backend/js/site.js"></script>
     @await RenderSectionAsync("Scripts", required:false)
 </body>
 

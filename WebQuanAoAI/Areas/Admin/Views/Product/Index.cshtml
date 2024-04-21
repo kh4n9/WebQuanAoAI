@@ -27,13 +27,13 @@
                 <td>@item.Name</td>
                 <td>@item.Description</td>
                 <td>@item.Price</td>
-                <td><img src="~/img/@item.Image" width="120" /> @item.Image </td>
+                <td><img src="~/media/products/@item.Image" width="120" /> @item.Image </td>
                 <td>@item.Slug</td>
                 <td>@item.Category.Name</td>
                 <td>@item.Brand.Name</td>
                 <td>
                     <a asp-action="Edit" asp-controller="Product" asp-route-Id="@item.Id"><button type="button" class="btn btn-primary">Edit</button></a>
-                    <a asp-action="Delete" asp-controller="Product" asp-route-Id="@item.Id"><button type="button" class="btn btn-danger">Delete</button></a>
+                    <a asp-action="Delete" asp-controller="Product" asp-route-Id="@item.Id"><button type="button" class="btn btn-danger confirmDeletion">Delete</button></a>
                 </td>
             </tr>  
         }
