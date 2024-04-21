@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using WebQuanAoAI.Repository.Validation;
 
 namespace WebQuanAoAI.Models
 {
@@ -6,17 +8,22 @@ namespace WebQuanAoAI.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required, MinLength(1, ErrorMessage = "Vui lòng nhập tên sản phẩm")]
+        [Required]
         public string Name { get; set; }
-        [Required, MinLength(1, ErrorMessage = "Vui lòng nhập mô tả sản phẩm")]
+        [Required]
         public string Description { get; set; }
         public string Slug { get; set; }
-        [Required, MinLength(1, ErrorMessage = "Vui lòng nhập giá sản phẩm")]
+        [Required]
         public decimal Price { get; set; }
+        [Required]
         public int BrandId { get; set; }
         public BrandModel Brand { get; set; }
+        [Required]
         public int CategoryId { get; set; }
         public CategoryModel Category { get; set; }
         public string Image { get; set; }
+        [NotMapped]
+        [FileExtension]
+        public IFormFile ImageUpload { get; set; }
     }
 }

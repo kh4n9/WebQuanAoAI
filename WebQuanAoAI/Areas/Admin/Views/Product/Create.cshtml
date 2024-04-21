@@ -2,3 +2,60 @@
 @{
     ViewData["title"] = "Create";
 }
+
+<h4>Create Product</h4>
+
+<div class="col-9">
+    <a asp-action="Index"><button class="btn btn-dark">Back to product list</button></a>
+
+    <form asp-action="Create" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label>Name:</label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger" />
+        </div>
+
+        <div class="form-group">
+            <label>Description:</label>
+            <textarea asp-for="Description" class="form-control"></textarea>
+            <span asp-validation-for="Description" class="text-danger" />
+        </div>
+
+        <div class="form-group">
+            <label>Price:</label>
+            <input asp-for="Price" class="form-control" />
+            <span asp-validation-for="Price" class="text-danger" />
+        </div>
+
+        <div class="form-group form-select" aria-label="Default select example">
+            <label>Category:</label>
+            <select asp-for="CategoryId" asp-items="ViewBag.Categories">
+                <option>--Choose a category--</option>
+            </select>
+            <span asp-validation-for="Category" class="text-danger" />
+        </div>
+
+        <div class="form-group form-select" aria-label="Default select example">
+            <label>Brand:</label>
+            <select asp-for="BrandId" asp-items="ViewBag.Brands">
+                <option>--Choose a brand--</option>
+            </select>
+            <span asp-validation-for="Brand" class="text-danger" />
+        </div>
+
+        <div class="form-group">
+            <label>Image:</label>
+            <input asp-for="ImageUpload" class="form-control-file" />
+            <span asp-validation-for="ImageUpload" class="text-danger" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create</button>
+
+    </form>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
