@@ -1,0 +1,65 @@
+﻿@model WebQuanAoAI.Models.ProductModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<div class="col-9">
+    <a asp-action="Index"><button class="btn btn-dark">Back to product list</button></a>
+
+    <form asp-action="Edit" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label>Name:</label>
+            <input required asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger" />
+        </div>
+
+        <div class="form-group">
+            <label>Description:</label>
+            <textarea required asp-for="Description" class="form-control"></textarea>
+            <span asp-validation-for="Description" class="text-danger" />
+        </div>
+
+        <div class="form-group">
+            <label>Price:</label>
+            <input required asp-for="Price" class="form-control" />
+            <span asp-validation-for="Price" class="text-danger" />
+        </div>
+
+        <div class="form-group form-select" aria-label="Default select example">
+            <label>Category:</label>
+            <select required asp-for="CategoryId" asp-items="ViewBag.Categories">
+            </select>
+            <span asp-validation-for="Category" class="text-danger" />
+        </div>
+
+        <div class="form-group form-select" aria-label="Default select example">
+            <label>Brand:</label>
+            <select required asp-for="BrandId" asp-items="ViewBag.Brands">
+            </select>
+            <span asp-validation-for="Brand" class="text-danger" />
+        </div>
+
+        <div class="form-group">
+            <label>Image:</label>
+            <input required asp-for="ImageUpload" class="form-control-file" />
+            <span asp-validation-for="ImageUpload" class="text-danger" />
+            <img src="~/media/products/@Model.Image" width="120" />
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+
+    </form>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
