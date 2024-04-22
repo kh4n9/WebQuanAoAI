@@ -150,16 +150,9 @@
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
                             <a asp-controller="Home" asp-action="" class="nav-item nav-link active">Home</a>
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down mt-1"></i></a>
-                                <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
-                                    <a asp-controller="Category" asp-action="" class="dropdown-item">Categories</a>
-                                    <a asp-controller="Product" asp-action="Details" class="dropdown-item">Product Details</a>
-                                    <a asp-controller="Cart" asp-action="" class="dropdown-item">Cart</a>
-                                    <a asp-controller="Checkout" asp-action="" class="dropdown-item">Checkout</a>
-                                </div>
-                            </div>
-                            <a class="nav-item nav-link">Contact</a>
+                            <a asp-controller="Cart" asp-action="" class="nav-item nav-link active">Cart</a>
+                            
+                            
                         </div>
                         <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
                             <a href="Cart" class="btn px-0">
